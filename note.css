@@ -8,7 +8,7 @@
 body{
   display: block;
   height: 0px;
-  font-family: flurr, Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
+  font-family: flurr, sans-serif;
 }
 #preload{
   display: none;
@@ -43,6 +43,7 @@ body{
     background: white;
     border-radius: 21px;
     font-size: 14px;
+    font-family: flurr, sans-serif;
   }
   #show{
     background: rgba(0,0,0,0.7);
@@ -63,6 +64,14 @@ body{
     color: grey;
     cursor: pointer;
   }
+  .brC-brG-avC-bBo-JX{
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: 25px;
+    height: 25px;
+    margin-top: -12.5px;
+  }
   #cancel:hover{
     color: white;
   }
@@ -73,13 +82,42 @@ body{
     margin-left: -50px;
     background: linear-gradient(to right, blue , #00abff);
     width: 100px;
-    height: 40px;
+    height: 50px;
     border: none;
     border-radius: 2px;
     position: absolute;
     outline: none;
     cursor: pointer;
     font-size: 14px;
+    font-family: flurr, sans-serif;
+    font-size: 18px;
+  }
+  #bot{
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 0px;
+    right: 0px;
+  }
+  #circl{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #673ab7;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08), rgba(0, 0, 0, 0.2) 0px 7px 18px;
+  }
+  #new{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -15px;
+    margin-left: -15px;
+    width: 30px;
+    height: 30px;
+    fill: white;
   }
   #header{
     top: 0px;
@@ -87,34 +125,38 @@ body{
     position: fixed;
     background: white;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08), rgba(0, 0, 0, 0.2) 0px 7px 18px;
-    height: 50px;
+    height: 60px;
     width: 100%;
     z-index: 1;
   }
   #create{
+    position: absolute;
     right: 10px;
     top: 50%;
-    margin-top: -10px;
-    height: 20px;
-    position: absolute;
+    height: 30px;
+    margin-top: -15px;
     color: white;
     background: blue;
     border-radius: 2px;
     border: none;
     opacity: 1;
     z-index: 1;
+    font-family: flurr, sans-serif;
+    width: 70px;
+    font-size: 15px;
   }
   #delete{
     color: white;
     background: red;
     left: 10px;
     top: 50%;
-    margin-top: -10px;
-    height: 20px;
+    margin-top: -15px;
+    height: 30px;
     position: absolute;
     border-radius: 2px;
     border: none;
     font-size: 14px;
+    font-family: flurr, sans-serif;
   }
   #delete:hover{
     color: grey;
@@ -130,7 +172,7 @@ body{
   }
   #notes{
     position: relative;
-    top: 50px;
+    top: 60px;
     z-index: -1;
   }
   li.li{

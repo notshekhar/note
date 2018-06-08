@@ -1,4 +1,9 @@
-
+let sound0 = new Howl({
+  src: ['buttonpress1.mp4']
+})
+let sound1 = new Howl({
+  src: ['buttonpress.mp4']
+})
 
 function alert(mess){
   let alert = document.querySelector('#alert');
@@ -93,13 +98,8 @@ create_note.onclick = function(){
 
   }else{
     console.log("empty write something");
-    let sound = new Howl({
-      src: ['sound.webm']
-    })
-    let p = sound.play()
-    sound.rate(1.6, p)
-    Howler.volume(0.2)
-
+    let p = sound0.play()
+    sound0.rate(1.8, p)
     alert("You can't leave body as empty, write something")
   }
 
@@ -164,6 +164,7 @@ document.onclick = function(e){
     speechSynthesis.speak(s);
     // console.log(e);
   }else if(e.target.tagName == "LI"){
+    sound1.play()
     exp.style.display = "block"
     let top = document.getElementById("showtitle").getBoundingClientRect().height;
     let height = document.getElementById("wrap").getBoundingClientRect().height-document.getElementById("showtitle").getBoundingClientRect().height;
@@ -226,6 +227,8 @@ document.onmousedown = function(e){
       document.getElementById("menu").style.width = "0px";
     }
     if(e.target.id == "del"){
+      let d = sound0.play()
+      sound0.rate(1.6, d)
       document.getElementById("menu").style.display = "block";
       arr.splice(id, 1);
       localStorage.setItem("note", JSON.stringify(arr));

@@ -348,14 +348,11 @@ if(note.innerText==""){
     not.style.left = window.innerWidth/2 - not.getBoundingClientRect().width/2 +"px";
   }
 }
-// let add = document.querySelector("#add");
-// add.onclick = function(){
-//   sho.style.display = "block";
-// }
-// let alli = document.getElementById("allli");
-// document.getElementById("list").onclick = function(){
-//   alli.style.display = "block";
-// }
+let n = document.querySelector('#circl')
+n.onclick = function(){
+  sho.style.display = "block";
+  writet.focus();
+}
 if(window.innerWidth<800){
   document.querySelector('#alert_box').style.marginLeft = '-'+window.innerWidth/2+'px'
 }

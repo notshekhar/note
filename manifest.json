@@ -1,0 +1,22 @@
+{
+  "name": "Flurr Note",
+  "short_name": "flurr note",
+  "theme_color": "white",
+  "background_color": "white",
+  "display": "fullscreen",
+  "Scope": "/",
+  "start_url": "index.htm",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "logo144.png",
+      "size": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
+}

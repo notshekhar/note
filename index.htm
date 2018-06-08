@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(function () {
+        console.log('Service worker successfully registered');
+      }).catch(function (err) {
+        console.error('Service worker failed to register', err);
+      });
+    } else {
+      console.log('Service workers not supported');
+    }
+
+    </script>
+    <link rel="shortcut icon" href="logo144.png" />
+    <script src="howler.js" charset="utf-8"></script>
+    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Create Notes</title>
+    <link rel="stylesheet" href="note.css">
+  </head>
+  <body>
+    <!-- preload -->
+    <div id="preload">
+
+    </div>
+    <!-- create new notes -->
+    <div id="show">
+      <div id="cancel">
+        <svg class="brC-brG-avC-bBo-JX" width="24px" height="24px" viewBox="0 0 24 24" fill="#000000" focusable="false"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+      </div>
+      <div id="write">
+        <hr>
+        <input type="text" id="title" placeholder="Write title of note">
+        <hr id="hr">
+        <textarea placeholder="Write new note" name="name" id="value" rows="8" cols="80"></textarea>
+        <button type="button"id="createnote" name="button">Create</button>
+      </div>
+    </div>
+
+    <div id="header">
+      <button type="button" id="create" name="button" title="create new note">Write</button>
+      <button type="button"id="delete" name="button">Delete All</button>
+    </div>
+    <div id="notes">
+
+
+    </div>
+
+    <div id="expand">
+      <div id="wrap">
+      <div id="header2">
+        <i>
+          <svg  id="back" http://www.w3.org/2000/svg" viewBox="0 0 14.407 22.938"><metadata><xpacket begin=" " id="W5M0MpCehiHzreSzNTczkc9d" ?=""><x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c140 79.160451, 2017/05/06-01:08:21 "><rdf:rdf xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:description rdf:about=""></rdf:description></rdf:rdf></x:xmpmeta><xpacket end="w" ?=""></xpacket></xpacket></metadata><defs><style> .cls-1 { fill: white; fill-rule: evenodd; } </style></defs><path id="Purple_arrow" data-name="Purple arrow" class="cls-1" d="M345.787,251.832L337.808,260a3.172,3.172,0,0,1-4.56,0,3.359,3.359,0,0,1,0-4.67l5.7-5.837-5.7-5.837a3.359,3.359,0,0,1,0-4.67,3.172,3.172,0,0,1,4.56,0l7.979,8.172A3.359,3.359,0,0,1,345.787,251.832Z" transform="translate(-332.312 -238.031)"></path></svg>
+        </i>
+    </div>
+      <div id="showtitle">
+        <span id='ts'></span>
+      </div>
+      <div id="body">
+        <span id="bs"></span>
+      </div>
+    </div>
+    </div>
+    <!-- menu -->
+    <div id="all">
+      <div id="menu">
+        <span id="del">
+          Delete
+        </span>
+      </div>
+    </div>
+
+    <!-- alert -->
+    <div id="alert">
+      <div id="alert_box">
+        <div id="message"></div>
+        <button id="okay">Ok</button>
+      </div>
+    </div>
+    <!-- alert -->
+    <script type="text/javascript" src="note.js"></script>
+  </body>
+</html>

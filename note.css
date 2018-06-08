@@ -1,0 +1,560 @@
+@font-face {
+  src: url(flurr.ttf);
+  font-family: flurr;
+}
+::-webkit-scrollbar{
+  width: 0px;
+}
+body{
+  display: block;
+  height: 0px;
+  font-family: flurr, Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
+}
+#preload{
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: red;
+}
+  #value{
+    resize: none;
+    top: 62px;
+    left: 21px;
+    width: calc(100% - 40px);
+    height: calc(100% - 121px);
+    position: absolute;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-family: flurr;
+  }
+
+  #write{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -200px;
+    width: 400px;
+    height: 400px;
+    background: white;
+    border-radius: 21px;
+    font-size: 14px;
+  }
+  #show{
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 2;
+    /* opacity: 0.7; */
+  }
+  #cancel{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 40px;
+    color: grey;
+    cursor: pointer;
+  }
+  #cancel:hover{
+    color: white;
+  }
+  #createnote{
+    bottom: 10px;
+    left: 50%;
+    color: white;
+    margin-left: -50px;
+    background: linear-gradient(to right, blue , #00abff);
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 2px;
+    position: absolute;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  #header{
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08), rgba(0, 0, 0, 0.2) 0px 7px 18px;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+  }
+  #create{
+    right: 10px;
+    top: 50%;
+    margin-top: -10px;
+    height: 20px;
+    position: absolute;
+    color: white;
+    background: blue;
+    border-radius: 2px;
+    border: none;
+    opacity: 1;
+    z-index: 1;
+  }
+  #delete{
+    color: white;
+    background: red;
+    left: 10px;
+    top: 50%;
+    margin-top: -10px;
+    height: 20px;
+    position: absolute;
+    border-radius: 2px;
+    border: none;
+    font-size: 14px;
+  }
+  #delete:hover{
+    color: grey;
+    background: #f7cbcb;
+  }
+  #create:hover{
+    color: grey;
+    background: lightblue;
+  }
+  #create:active{
+    color: white;
+    background: grey;
+  }
+  #notes{
+    position: relative;
+    top: 50px;
+    z-index: -1;
+  }
+  li.li{
+    font-size: 16px;
+    position: relative;
+    text-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    list-style: none;
+    color: white;
+    background: linear-gradient(to right, blue , #00abff);
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 18px;
+    font-family: flurr, Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
+  }
+  hr{
+    display: none;
+  }
+  .speak{
+    top: 50%;
+    right: 21px;
+    position: absolute;
+    color: black;
+    background: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-top: -10px;
+    border: none;
+    outline: none;
+
+  }
+  #title{
+    position: absolute;
+    top: 1px;
+    left: 0px;
+    width: 90%;
+    height: 32px;
+    padding: 20px;
+    outline: none;
+    font-size: 20px;
+    border: none;
+    border-top-left-radius: 21px;
+    border-top-right-radius: 21px;
+    font-family: flurr;
+
+  }
+  #hr{
+    position: absolute;
+    top: 42px;
+    left: 0px;
+    background: linear-gradient(to right, blue , #00abff);
+    height: 1px;
+    width: 100%;
+  }
+  #expand{
+    display: none;
+  }
+  #expand{
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 2;
+  }
+  #wrap{
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    background: white;
+    animation-name: notosome;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+
+  }
+  @keyframes notosome {
+    from{
+      width: 0px;
+      height: 0px;
+    }
+    to{
+      width: 360px;
+      height: 550px;
+      margin-top: -275px;
+      margin-left: -180px;
+    }
+  }
+
+  #back{
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+    height: 20px;
+    position: absolute;
+    /* color: grey; */
+    transform: rotate(180deg);
+    z-index: 2;
+    font-size: 14px;
+  }
+  #back:hover{
+    color: white;
+  }
+  #showtitle{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    color: white;
+    width: 100%;
+    min-height: 200px;
+    font-family: flurr, Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
+    font-size: 21px;
+    z-index: 1;
+    background: linear-gradient(to right, blue , #00abff);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+
+  }
+  #body{
+    position: absolute;
+    overflow: scroll;
+    left: 0px;
+    width: 100%;
+    background: white;
+  }
+  #ts{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+  }
+  #bs{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: black;
+    font-size: 21px;
+
+  }
+  #menu{
+    display: none;
+    width: 0px;
+    height: 0px;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    z-index: 0.5;
+    position: absolute;
+    top: 60px;
+    left: 40px;
+    border-radius: 2px;
+    transition: height 200ms, width 200ms;
+  }
+  #del{
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 50px;
+    top: 0px;
+    cursor: pointer;
+    text-align: center;
+  }
+  #del:hover{
+    background: rgba(0,0,0,0.1);
+  }
+  #sidemenu{
+    display: none;
+  }
+  #none{
+    position: absolute;
+    font-weight: bolder;
+    font-style: 40px;
+    width: 400px;
+    height: 400px;
+    /* background: red; */
+  }
+  #footer{
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
+    height: 50px;
+    display: flex;
+  }
+  #add{
+    flex: 6;
+    text-align: center;
+    padding-left: 20px;
+    border-radius: 200px;
+    outline: none;
+    padding-top: 11px;
+    font-family: flurr;
+    border: blue;
+    border-width: 2px;
+    border-style: solid;
+  }
+  #add:hover{
+    /* background: #f1f3f4; */
+    background: linear-gradient(to right, blue , #00abff);
+  }
+  #list{
+    flex: 1;
+    text-align: center;
+    padding-top: 11px;
+    border: blue;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 200px;
+  }
+  #list:hover{
+    /* background: #f1f3f4; */
+    background: linear-gradient(to right, blue , #00abff);
+
+  }
+  #space{
+    flex: 1;
+  }
+  .brC-brG-avC-bBo-JX:hover{
+    color: white;
+  }
+  #allli{
+    display: none;
+  }
+  #alert{
+    display: none;
+    position: fixed;
+    z-index: 3;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.8);
+  }
+  #alert_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
+    background: white;
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,0.16), 0 0 20px 1px rgba(0,0,0,0.08);
+    margin-left: 0px;
+    margin-top: 0px;
+    border-radius: 10px;
+    animation-name: zero;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+  }
+  @keyframes zero {
+    from{
+      width: 0px;
+      height: 0px;
+      margin-left: 0px;
+      margin-top: 0px;
+    }
+    to{
+      width: 400px;
+      height: 200px;
+      margin-left: -200px;
+      margin-top: -100px;
+    }
+  }
+  #message{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -200px;
+    text-align: center;
+  }
+  #okay{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    outline: none;
+    border: solid;
+    border-color: rgba(0,0,0,0.16);
+    border-width: 1px;
+    color: black;
+    font-family: flurr, serif;
+    background: white;
+    width: 60px;
+    height: 30px;
+  }
+  #okay:hover{
+    color: white;
+    background: rgba(0,0,0,0.16)
+  }
+  .menu-dot{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    height: 20px;
+    margin-top: -10px;
+  }
+  /* for mobile */
+  @media(max-width: 800px){
+    #alert_box{
+      border-radius: 0px;
+    }
+    @keyframes zero {
+      from{
+        width: 0px;
+        height: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+      }
+      to{
+        width: 100%;
+        height: 200px;
+        margin-top: -100px;
+      }
+    }
+    #write{
+      width: 100%;
+      height: calc(100% - 50px);
+      top: 50px;
+      left: 0px;
+      margin-top: 0px;
+      margin-left: 0px;
+      border-radius: 0px;
+    }
+    #cancel{
+      height: 50px;
+      right: 0px;
+      top: 0px;
+      width: 100%;
+      padding-left: 10px;
+      background: white;
+    }
+    #cancel:hover{
+      color: black;
+    }
+    #createnote{
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+      margin-left: 0px;
+      margin-bottom: 0px;
+      border-radius: 0px;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+
+    }
+    hr{
+      display: block;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background: linear-gradient(to right, blue , #00abff);
+      height: 1px;
+      width: 100%;
+    }
+    #wrap{
+      width: 100%;
+      height: 0px;
+      margin-top: 0px;
+      margin-left: 0px;
+      animation-name: wrapno;
+      animation-duration: 200ms;
+      animation-fill-mode: forwards;
+      bottom: 0px;
+      left: 0px;
+    }
+    @keyframes wrapno {
+      from{
+        height: 0px;
+        bottom: 0px;
+      }
+      to{
+        height: 100%;
+        top: 0px;
+      }
+    }
+    #title{
+      border-radius: 0px;
+      top: 9px;
+    }
+    #hr{
+      top: 52px;
+    }
+    #value{
+      top: 72px;
+    }
+    .speak{
+      display: none;
+    }
+    #sidemenu{
+      display: block;
+
+    }
+    #menu{
+      display: none;
+    }
+    #all{
+      z-index: 1;
+      display: none;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+    .frombottomtotop{
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+      height: 0px;
+      animation-name: bottomtotop;
+      animation-duration: 300ms;
+      animation-fill-mode: forwards;
+    }
+    @keyframes bottomtotop {
+      from{
+        height: 0px;
+      }
+      to{
+        height: 300px;
+      }
+    }
+
+
+  }

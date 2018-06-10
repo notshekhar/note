@@ -10,6 +10,7 @@ body{
   height: 0px;
   font-family: flurr, sans-serif;
 }
+
 #preload{
   display: none;
   position: fixed;
@@ -343,10 +344,11 @@ body{
     display: none;
   }
   #none{
-    position: absolute;
+    position: fixed;
     font-weight: bolder;
     font-style: 40px;
-    width: 400px;
+    width: 100%;
+    padding-top: 180px;
     height: 400px;
     /* background: red; */
   }

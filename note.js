@@ -356,3 +356,46 @@ n.onclick = function(){
 if(window.innerWidth<800){
   document.querySelector('#alert_box').style.marginLeft = '-'+window.innerWidth/2+'px'
 }
+
+function scroll(func){
+  let m
+  let y = 0
+  let arr = []
+  let sum = 0
+  window.onscroll = function(){
+    let x = y
+    y = window.scrollY
+    if(x>y){
+      arr.push(1)
+      if(sum>9){
+        m = "up"
+      }
+    }else{
+      arr.push(0)
+      if(sum<4){
+        m = "down"
+      }
+    }
+    sum = 0
+    if(arr.length>11){
+      for(let i=arr.length-11; i<arr.length; i++){
+        sum+=arr[i]
+      }
+    }
+    func(m)
+  }
+
+}
+
+let t = document.querySelector('#bot')
+let k = document.querySelector("#circl")
+scroll(function(e){
+  if(e=="down"){
+    k.classList.add("ftoc")
+    t.classList.add("ftoc")
+  }else{
+
+    t.classList.remove("ftoc")
+    k.classList.remove("ftoc")
+  }
+})

@@ -10,7 +10,15 @@ body{
   height: 0px;
   font-family: flurr, sans-serif;
 }
+.edit{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background: url('edit.png');
 
+}
 #preload{
   display: none;
   position: fixed;
@@ -99,6 +107,7 @@ body{
   #cancel:hover{
     color: white;
   }
+
   #createnote{
     bottom: 10px;
     left: 50%;
@@ -275,7 +284,6 @@ body{
     animation-name: notosome;
     animation-duration: 200ms;
     animation-fill-mode: forwards;
-
   }
   @keyframes notosome {
     from{
@@ -329,6 +337,7 @@ body{
     top: 50%;
     left: 50%;
     position: absolute;
+    outline: none;
   }
   #bs{
     position: absolute;
@@ -336,7 +345,7 @@ body{
     left: 10px;
     color: black;
     font-size: 21px;
-
+    outline: none;
   }
   #menu{
     display: none;
@@ -348,19 +357,35 @@ body{
     position: absolute;
     top: 60px;
     left: 40px;
-    border-radius: 2px;
-    transition: height 200ms, width 200ms;
+    border-radius: 4px;
+    width: 100%;
+    transition: height 200ms;
   }
   #del{
     position: absolute;
     left: 0px;
     width: 100%;
-    height: 50px;
+    height: 40px;
     top: 0px;
     cursor: pointer;
     text-align: center;
+    padding-top: 20px;
   }
   #del:hover{
+    background: rgba(0,0,0,0.1);
+  }
+  #edi{
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 40px;
+    top: 61px;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 20px;
+    background: white;
+  }
+  #edi:hover{
     background: rgba(0,0,0,0.1);
   }
   #sidemenu{
@@ -497,8 +522,53 @@ body{
     height: 20px;
     margin-top: -10px;
   }
+  #submit{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    color: white;
+    background: linear-gradient(to right, blue , #00abff);
+    border: none;
+    position: absolute;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: flurr, sans-serif;
+    font-size: 18px;
+    display: none;
+  }
   /* for mobile */
   @media(max-width: 800px){
+    #del{
+      border-bottom: solid;
+      border-bottom-width: 1px;
+      border-bottom-color: rgba(0,0,0,0.1);
+    }
+    #edi{
+      border-bottom: solid;
+      border-bottom-width: 1px;
+      border-bottom-color: rgba(0,0,0,0.1);
+    }
+    #submit{
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+      height: 50px;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+      color: white;
+      background: linear-gradient(to right, blue , #00abff);
+      border: none;
+      position: absolute;
+      outline: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: flurr, sans-serif;
+      font-size: 18px;
+      display: none;
+    }
     #alert_box{
       border-radius: 0px;
     }

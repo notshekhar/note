@@ -172,25 +172,32 @@ document.onclick = function(e){
     document.getElementById("body").style.top = top+"px";
     document.getElementById("body").style.height =  height+"px";
     let i = e.target.id;
-    let tp = document.querySelector("#ts");
+    let tp = document.querySelector("#ts")
+    arr = JSON.parse(localStorage.getItem('note'))
     tp.innerText = arr[i].title;
     tp.style.marginTop = "-"+tp.getBoundingClientRect().height/2 +"px";
     tp.style.marginLeft = "-"+tp.getBoundingClientRect().width/2 +"px";
-
-    let bp = document.querySelector("#bs");
+    document.querySelector('#submit').dataset.id = i
+    let bp = document.querySelector("#bs")
     bp.innerText = arr[i].body;
   }
 
 
 }
 
-
+let tp = document.querySelector("#ts")
+let bp = document.querySelector("#bs")
 document.getElementById("back").onclick = function(){
-  exp.style.display = "none";
-  tp.innerHTML="";
-  bp.innerHTML = "";
+  document.querySelectorAll('.edit').forEach(function(edit){
+    edit.style.display = 'block'
+  })
+  tp.innerHTML=""
+  bp.innerHTML = ""
+  exp.style.display = "none"
+
 }
-let id;
+
+let id
 document.onmousedown = function(e){
 
   if(window.innerWidth<800){
@@ -204,13 +211,11 @@ document.onmousedown = function(e){
         document.getElementById("menu").style.top = "auto";
         document.getElementById("menu").style.left = "0px";
         document.getElementById("menu").style.height = "300px";
-        document.getElementById("menu").style.width = "100%";
       }else{
         document.getElementById("all").style.display = "none"
         document.getElementById("menu").style.display = "none";
         document.getElementById("menu").classList.remove("frombottomtotop");
         document.getElementById("menu").style.height = "0px";
-        document.getElementById("menu").style.width = "0px";
       }
 
     }else if(e.button==1){
@@ -218,13 +223,11 @@ document.onmousedown = function(e){
       document.getElementById("menu").style.display = "none";
       document.getElementById("menu").classList.remove("frombottomtotop");
       document.getElementById("menu").style.height = "0px";
-      document.getElementById("menu").style.width = "0px";
     }else if(e.button==0){
       document.getElementById("all").style.display = "none";
       document.getElementById("menu").style.display = "none";
       document.getElementById("menu").classList.remove("frombottomtotop");
       document.getElementById("menu").style.height = "0px";
-      document.getElementById("menu").style.width = "0px";
     }
     if(e.target.id == "del"){
       let d = sound0.play()
@@ -233,13 +236,13 @@ document.onmousedown = function(e){
       arr.splice(id, 1);
       localStorage.setItem("note", JSON.stringify(arr));
 
-      note.innerHTML = "";
+      note.innerHTML = ""
       for(let i=arr.length-1; i>=0; i--){
         note.innerHTML += '<li class="li" id=' + i + '>' + arr[i].title + '<img class="menu-dot" src="menu-dots.svg"><button class="speak">';
       }
       if(note.innerText==""){
         note.innerHTML = '<div id="none"><center><img src="zero-state.svg"><br><br>A fresh start</center></div>';
-        not = document.getElementById("none");
+        not = document.getElementById("none")
         not.style.top = window.innerHeight/2 - not.getBoundingClientRect().height/2 +"px";
         not.style.left = window.innerWidth/2 - not.getBoundingClientRect().width/2 +"px";
         window.onresize = function(){
@@ -306,10 +309,11 @@ document.onmousedown = function(e){
     document.getElementById("menu").style.top = "auto";
     document.getElementById("menu").style.left = "0px";
     document.getElementById("menu").style.height = "300px";
-    document.getElementById("menu").style.width = "100%";
+
     id = e.path[1].id
-    document.onmouseup = function(e){
+    document.onmouseup = function(a){
       if(e.target.id == "del"){
+        console.log('delete')
         document.getElementById("menu").style.display = "block";
         arr.splice(id, 1);
         localStorage.setItem("note", JSON.stringify(arr));
@@ -328,7 +332,10 @@ document.onmousedown = function(e){
             not.style.left = window.innerWidth/2 - not.getBoundingClientRect().width/2 +"px";
           }
         }
-        document.getElementById("menu").style.display = "none";
+        document.getElementById("menu").style.display = "none"
+      }
+      if(e.target.id=='edi'){
+        document.getElementById("menu").style.display = "block"
       }
     }
   }
@@ -357,45 +364,46 @@ if(window.innerWidth<800){
   document.querySelector('#alert_box').style.marginLeft = '-'+window.innerWidth/2+'px'
 }
 
-function scroll(func){
-  let m
-  let y = 0
-  let arr = []
-  let sum = 0
-  window.onscroll = function(){
-    let x = y
-    y = window.scrollY
-    if(x>y){
-      arr.push(1)
-      if(sum>9){
-        m = "up"
-      }
-    }else{
-      arr.push(0)
-      if(sum<4){
-        m = "down"
-      }
-    }
-    sum = 0
-    if(arr.length>11){
-      for(let i=arr.length-11; i<arr.length; i++){
-        sum+=arr[i]
-      }
-    }
-    func(m)
+
+document.querySelectorAll('.edit').forEach(function(edit){
+  edit.onclick = function(){
+    exp.style.display = 'block'
+    document.querySelector('#submit').style.display = 'block'
+    document.querySelector('#ts').contentEditable = true
+    document.querySelector('#bs').contentEditable = true
+    document.querySelectorAll('.edit').forEach(function(edit){
+      edit.style.display = 'none'
+    })
+  }
+})
+document.querySelector('#submit').onclick = function(){
+  let i = document.querySelector('#submit').dataset.id
+  let arr = JSON.parse(localStorage.getItem('note'))
+  document.querySelectorAll('.edit').forEach(function(edit){
+    edit.style.display = 'block'
+  })
+  document.querySelector('#ts').contentEditable = false
+  document.querySelector('#bs').contentEditable = false
+  if(tp.innerText.length<1){
+    tp.innerText = 'Untitled'
+    tp.style.marginLeft ='-'+tp.getBoundingClientRect().width/2 +'px'
+  }
+  if(bp.innerText.length<1){
+    bp.innerText = 'edit to write in body'
+  }
+  let title = document.querySelector('#ts').innerText
+  let body = document.querySelector('#bs').innerText
+  arr[i].title = title
+  arr[i].body = body
+  localStorage.setItem('note', JSON.stringify(arr))
+  document.querySelector('#submit').style.display = 'none'
+  note.innerHTML = ''
+  arr = JSON.parse(localStorage.getItem("note"));
+  for(let i=arr.length-1; i>=0; i--){
+    note.innerHTML += "<li class="+ "li" +" id=" + i + ">" + arr[i].title + '<img class="menu-dot" src="menu-dots.svg"><button class="speak">';
   }
 
 }
-
-let t = document.querySelector('#bot')
-let k = document.querySelector("#circl")
-scroll(function(e){
-  if(e=="down"){
-    k.classList.add("ftoc")
-    t.classList.add("ftoc")
-  }else{
-
-    t.classList.remove("ftoc")
-    k.classList.remove("ftoc")
-  }
-})
+tp.onkeyup = function(){
+  tp.style.marginLeft ='-'+tp.getBoundingClientRect().width/2 +'px'
+}

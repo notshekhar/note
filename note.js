@@ -194,7 +194,9 @@ document.getElementById("back").onclick = function(){
   tp.innerHTML=""
   bp.innerHTML = ""
   exp.style.display = "none"
-
+  document.querySelector('#ts').contentEditable = false
+  document.querySelector('#bs').contentEditable = false
+  document.querySelector('#submit').style.display = 'none'
 }
 
 let id

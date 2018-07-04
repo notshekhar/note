@@ -14,7 +14,8 @@ var filesToCache = [
   'logo144.png',
   'howler.js',
   'buttonpress.mp4',
-  'buttonpress1.mp4'
+  'buttonpress1.mp4',
+  'edit.png'
 ]
 self.addEventListener('install', function(event) {
   function onInstall () {
